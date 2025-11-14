@@ -1,0 +1,35 @@
+DROP TABLE IF EXISTS Books CASCADE;
+DROP TABLE IF EXISTS Members CASCADE;
+DROP TABLE IF EXISTS Loans CASCADE;
+
+CREATE TABLE Books (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    isbn VARCHAR(20) UNIQUE,
+    published_year INTEGER,
+    category VARCHAR(100),
+    totoral_copies INTEGER DEFAULT 1,
+    available_copies INTEGER DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Members (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    lats_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15),
+    membership_date DATE DEFAULT CURRENT_DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Loans (
+    id SERIAL PRIMARY KEY,
+    book_id INTEGER NOT NULL,
+    member_id INTEGER NOT NULL,
+    loan_date DATE DEFAULT CURRENT_DATE,
+    due_date DATE NOT NULL,
+    return_date DATE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
