@@ -30,7 +30,7 @@ CREATE TABLE Loans (
     member_id INTEGER NOT NULL,
     loan_date DATE DEFAULT CURRENT_DATE,
     due_date DATE NOT NULL,
-    return_date DATE NOT NULL,
+    return_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
