@@ -82,12 +82,12 @@ ORDER BY antal_lan DESC
 LIMIT 5;
 
 SELECT 
-    m.name, 
-    m.lats_name, 
+    m.first_name, 
+    m.last_name, 
     COUNT(l.id) AS antal_lan
-FROM Loans l
-JOIN Members m ON l.member_id = m.id
-GROUP BY m.id
+FROM loans l
+JOIN members m ON l.member_id = m.id
+GROUP BY m.id, m.first_name, m.last_name
 ORDER BY antal_lan DESC;
 
 SELECT
