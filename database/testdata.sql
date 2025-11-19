@@ -1,4 +1,4 @@
-INSERT INTO Books (title, author, isbn, published_year, category, totoral_copies, available_copies)
+INSERT INTO books (title, author, isbn, publication_year, category, total_copies, available_copies)
 VALUES
 ('The Pragmatic Programmer', 'Andrew Hunt & David Thomas', '9780201616224', 1999, 'Software Development', 5, 3),
 ('Clean Code', 'Robert C. Martin', '9780132350884', 2008, 'Software Engineering', 7, 7),
@@ -14,10 +14,13 @@ VALUES
 ('Moby-Dick', 'Herman Melville', '9781503280786', 1851, 'Adventure', 4, 3),
 ('A Game of Thrones', 'George R.R. Martin', '9780553573404', 1996, 'Fantasy', 12, 6),
 ('The Name of the Wind', 'Patrick Rothfuss', '9780756404741', 2007, 'Fantasy', 7, 5),
-('The Alchemist', 'Paulo Coelho', '9780062315007', 1988, 'Fiction', 9, 9);
+('The Alchemist', 'Paulo Coelho', '9780062315007', 1988, 'Fiction', 9, 9),
+('Meditations', 'Marcus Aurelius', '9780140449334', 180, 'Philosophy', 4, 4),
+('The Design of Everyday Things', 'Don Norman', '9780465050659', 2013, 'Design / UX', 3, 3),
+('The Little Prince', 'Antoine de Saint-Exupéry', '9780156012195', 1943, 'Fiction', 6, 6);
 
 
-INSERT INTO Members (name, lats_name, email, phone, membership_date)
+INSERT INTO members (first_name, last_name, email, phone, membership_date)
 VALUES
 ('Anna', 'Johansson', 'anna.johansson@example.com', '0701234567', '2024-02-10'),
 ('Erik', 'Svensson', 'erik.svensson@example.com', '0709876543', '2023-11-22'),
@@ -28,10 +31,13 @@ VALUES
 ('Lina', 'Bergström', 'lina.bergstrom@example.com', '0727788990', '2024-02-28'),
 ('Daniel', 'Holm', 'daniel.holm@example.com', '0761122334', '2023-09-30'),
 ('Elin', 'Ekström', 'elin.ekstrom@example.com', '0704433221', '2024-01-05'),
-('Victor', 'Lundgren', 'victor.lundgren@example.com', '0735544332', '2023-12-20');
+('Victor', 'Lundgren', 'victor.lundgren@example.com', '0735544332', '2023-12-20'),
+('Oliver', 'Persson',  'oliver.persson@example.com',  '0702201100', '2024-03-12'),
+('Maja',   'Karlsson', 'maja.karlsson@example.com',   '0739911223', '2023-11-01'),
+('Elias',  'Bengtsson','elias.bengtsson@example.com', '0765544332', '2024-02-20');
 
 
-INSERT INTO Loans (book_id, member_id, loan_date, due_date, return_date)
+INSERT INTO loans (book_id, member_id, loan_date, due_date, return_date)
 VALUES
 (1, 3, '2024-01-05', '2024-01-19', '2024-01-18'),
 (2, 1, '2024-01-10', '2024-01-24', '2024-01-23'),
