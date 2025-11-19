@@ -33,3 +33,9 @@ CREATE TABLE loans (
     return_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_loans_book_id ON loans (book_id);
+CREATE INDEX idx_loans_member_id ON loans (member_id);
+CREATE INDEX idx_books_category ON books (category);
+CREATE INDEX idx_books_title ON books (title);
+CREATE INDEX idx_members_membership_date ON members (membership_date);
