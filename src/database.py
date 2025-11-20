@@ -1,10 +1,26 @@
-from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+from dotenv import load_dotenv
+import os
+
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is missing in .env file")
+
+
+engine = create_engine(DATABASE_URL, echo=True)
 
 Base = declarative_base()
 
-class Book(Base):
-    __tablename__ = 'books'
-    id = Column(Integer, primary_key=True)
-    title = Column(String)
-    author = Column(String)
+SessionLocal = sessionmaker(bind=engine)
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
