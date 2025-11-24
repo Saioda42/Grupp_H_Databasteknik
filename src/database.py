@@ -12,7 +12,7 @@ if not DATABASE_URL:
     raise ValueError("DATABASE_URL is missing in .env file")
 
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL, echo=False)
 
 Base = declarative_base()
 
