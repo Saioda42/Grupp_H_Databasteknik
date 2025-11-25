@@ -8,7 +8,7 @@ class Book(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
     author = Column(String, nullable=False)
-    isbn = Column(String)
+    isbn = Column(String, unique=True)
     publication_year = Column(Integer)
     category = Column(String)
     total_copies = Column(Integer)
@@ -22,7 +22,7 @@ class Member(Base):
     id = Column(Integer, primary_key=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
-    email = Column(String, nullable=False)
+    email = Column(String, nullable=False, unique=True)
     phone = Column(String)
     membership_date = Column(Date)
 
@@ -36,7 +36,7 @@ class Loan(Base):
     book_id = Column(Integer, ForeignKey("books.id"), nullable=False)
     member_id = Column(Integer, ForeignKey("members.id"), nullable=False)
     loan_date = Column(Date)
-    due_date = Column(Date)
+    due_date = Column(Date, nullable=False )
     return_date = Column(Date)
 
     book = relationship("Book", back_populates="loans")
