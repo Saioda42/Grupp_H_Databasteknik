@@ -1,6 +1,8 @@
 from models import Member
 from database import get_db
+from utils import clear_screen
 import os
+
 
 def Visa_alla_medlemmar(db):
     return db.query(Member).all()
@@ -30,14 +32,14 @@ def member_meny():
         val = input("Välj ett alternativ: ")
 
         if val == '1':
-            os.system('cls')
+            clear_screen()
             first_name = input("Ange förnamn: ")
             last_name = input("Ange efternamn: ")
             email = input("Ange medlems-e-post: ")
             medlem = lägg_till_medlem(db, first_name, last_name, email)
             print(f"Medlem '{medlem.first_name} {medlem.last_name}' har lagts till.")
         elif val == '2':
-            os.system('cls')
+            clear_screen()
             namn = input("Ange namn att söka efter: ")
             medlemmar = sök_efter_medlem(db, namn)
             if medlemmar:
@@ -46,14 +48,14 @@ def member_meny():
             else:
                 print("Inga medlemmar hittades med det namnet.")
         elif val == '3':
-            os.system('cls')
+            clear_screen()
             medlemmar = Visa_alla_medlemmar(db)
             if not medlemmar:
                 print("Inga medlemmar registrerade.")
             for medlem in medlemmar:
                 print(f"{medlem.id}: {medlem.first_name} {medlem.last_name} - {medlem.email}")
         elif val == '4':
-            os.system('cls')
+            clear_screen()
             break
         else:
             print("Ogiltigt val, försök igen.")

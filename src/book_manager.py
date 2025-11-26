@@ -1,9 +1,11 @@
 from models import Book
 from database import get_db
+from utils import clear_screen
 import os
 
+
 def lägg_till_bok(db, title, author):
-    ny_bok = Book(title=title, author=author, is_available=True)
+    ny_bok = Book(title=title, author=author)
     db.add(ny_bok)
     db.commit()
     db.refresh(ny_bok)
@@ -31,13 +33,13 @@ def bok_meny():
         val = input("Välj ett alternativ: ")
 
         if val == '1':
-            os.system('cls')
+            clear_screen()
             title = input("Ange boktitel: ")
             author = input("Ange författare: ")
             bok = lägg_till_bok(db, title, author)
             print(f"Bok '{bok.title}' av {bok.author} har lagts till.")
         elif val == '2':
-            os.system('cls')
+            clear_screen()
             title = input("Ange boktitel att söka efter: ")
             böcker = sök_efter_bok(db, title)
             if böcker:
@@ -47,18 +49,18 @@ def bok_meny():
             else:
                 print("Inga böcker hittades med den titeln.")
         elif val == '3':
-            os.system('cls')
+            clear_screen()
             böcker = visa_alla_bocker(db)
             for bok in böcker:
                 status = "Tillgänglig" if bok.available_copies else "Utlånad"
                 print(f"{bok.id}: {bok.title} av {bok.author} - {status}")
         elif val == '4':
-            os.system('cls')
+            clear_screen()
             böcker = tillgangliga_bocker(db)
             for bok in böcker:
                 print(f"{bok.id}: {bok.title} av {bok.author} - Tillgänglig")
         elif val == '5':
-            os.system('cls')
+            clear_screen()
             break
         else:
             print("Ogiltigt val, försök igen.")
